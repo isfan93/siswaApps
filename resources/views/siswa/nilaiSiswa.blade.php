@@ -74,6 +74,12 @@
                                                 <td>85</td>
                                                 <td>Baik</td>
                                             </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>B.Inggris</td>
+                                                <td>85</td>
+                                                <td>Baik</td>
+                                            </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
