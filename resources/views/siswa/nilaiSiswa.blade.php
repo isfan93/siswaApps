@@ -68,6 +68,12 @@
                                                 <td>85</td>
                                                 <td>Baik</td>
                                             </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>B.Indonesia</td>
+                                                <td>85</td>
+                                                <td>Baik</td>
+                                            </tr>
                                         </tbody>
                                         <tfoot>
                                             <tr>
