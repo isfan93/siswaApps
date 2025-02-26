@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             JurusanSeeder::class,
             KelasSeeder::class,
             SiswaSeeder::class,
-            TrxSiswaSeeder::class,
+            // TrxSiswaSeeder::class,
             UserSeeder::class
         ]);
     }

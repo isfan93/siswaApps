@@ -11,12 +11,15 @@ class trx_siswa extends Model
     protected $fillable = [
         'id_siswa',
         'id_kelas',
-        'id_jurusan',
-        'id_guru',
-        'id_mapel',
-        'nilai_pelajaran',
+        'matematika',
+        'fisika',
+        'kimia',
+        'biologi',
+        'bahasa_indonesia',
+        'bahasa_inggris',
         'tanggal',
-        'keterangan',        
+        'keterangan',
+        'status'        
     ];
 
     public function siswa()
@@ -29,15 +32,10 @@ class trx_siswa extends Model
         return $this->belongsTo(kelas::class, 'id_kelas', 'id');
     }
 
-    public function jurusan()
-    {
-        return $this->belongsTo(jurusan::class, 'id_jurusan', 'id');
-    }
-
-    public function guru()
-    {
-        return $this->belongsTo(guru::class, 'id_guru', 'id');
-    }
+    // public function jurusan()
+    // {
+    //     return $this->belongsTo(jurusan::class, 'id_jurusan', 'id');
+    // }
 
     public function pelajaran()
     {

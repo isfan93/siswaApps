@@ -23,8 +23,8 @@ class SiswaSeeder extends Seeder
             'no_telp' => '08123456789',
             'email' => 'R@mail.com',
             'foto' => 'Rizky.jpg',
-            'kelas' => 'XII-1',
-            'jurusan' => 'IPA'
+            'kelas_id' => '1'
+            // 'jurusan_id' => '1'
         ]);
 
         siswa::create([
@@ -36,8 +36,8 @@ class SiswaSeeder extends Seeder
             'no_telp' => '08123323232',
             'email' => 'Ssn@mail.com',
             'foto' => 'Susan.jpg',
-            'kelas' => 'XII-1',
-            'jurusan' => 'IPA'
+            'kelas_id' => '1'
+            // 'jurusan_id' => '1'
         ]);
 
         siswa::create([
@@ -49,8 +49,8 @@ class SiswaSeeder extends Seeder
             'no_telp' => '0823344455',
             'email' => 'Gl@mail.com',
             'foto' => 'Gilang.jpg',
-            'kelas' => 'XII-2',
-            'jurusan' => 'IPS'
+            'kelas_id' => '2'
+            // 'jurusan_id' => '2'
         ]);
     }
 }

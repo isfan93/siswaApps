@@ -17,9 +17,17 @@
                 </li>
                 <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                 <li class="active">
+                    <a href="{{ route('daftar-siswa') }}"> <i class="menu-icon fa fa-address-card"></i>Daftar Siswa </a>
+                </li>
+                <li class="active">
                     <a href="{{ route('siswa') }}"> <i class="menu-icon fa fa-laptop"></i>Daftar Nilai Siswa </a>
                 </li>
+                <li class="active">
+                    <a href="{{ route('analisis-jurusan') }}"> <i class="menu-icon fa fa-line-chart"></i>Hasil Analisis </a>
+                </li>
+
                 
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>

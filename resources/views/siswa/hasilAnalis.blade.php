@@ -70,42 +70,16 @@
                                                 <td>{{ $ns->bahasa_inggris }}</td>
                                                 <td>{{ $ns->keterangan }}</td>
                                                 <td>
-                                                    @if ($ns->status == 1)
-                                                    <a href="{{ route('data-nilai-siswa', $ns->id) }}" class="btn btn-success btn-sm">Analisis Nilai</a>
+                                                    @if ($ns->status == 2)
+                                                        <a href="{{ route('data-nilai-siswa', $ns->id) }}" class="btn btn-success btn-sm">Analisis Nilai</a>    
                                                     @else
-                                                    <button class="btn btn-sm btn-info">Sudah Ada Hasil</button>
+                                                        <button class="btn btn-sm btn-info">Done</button>
                                                     @endif
                                                     
                                                 </td>
                                             </tr>
                                         </tbody>
                                         @endforeach
-                                        
-                                        {{-- <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>NISN</th>
-                                                <th>Nama Siswa</th>
-                                                <th>Nama Guru</th>
-                                                <th>Pelajaran</th>
-                                                <th>Nilai</th>
-                                                <th>Keterangan</th>
-                                            </tr>
-                                        </thead> --}}
-                                        {{-- @foreach ($nilaiSiswa as $nilai)
-                                        <tbody>
-                                            <tr>
-                                                <td>{{ $no++ }}</td>
-                                                <td>{{ $nilai->siswa->nisn }}</td>
-                                                <td>{{ $nilai->siswa->nama_siswa }}</td>
-                                                <td>{{ $nilai->guru->nama_guru }}</td>
-                                                <td>{{ $nilai->pelajaran->nama_pelajaran }}</td>
-                                                <td>{{ $nilai->nilai_pelajaran }}</td>
-                                                <td>{{ $nilai->keterangan }}</td>
-                                            </tr>
-                                        </tbody>
-                                        @endforeach --}}
-                                    </table>
                                 </div>
                             </div>
                         </div>

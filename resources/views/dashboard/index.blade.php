@@ -91,63 +91,71 @@
             </div>
             <!--/.col-->
 
-
-            {{-- table --}}
             <div class="content mt-3">
                 <div class="animated fadeIn">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-lg-6 text-center">
                             <div class="card">
-                                <div class="card-header">
-                                    <strong class="card-title">Data Siswa</strong>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h3 class="card-title">
-                                        
-                                        </h3>
-                                        <div>
-                                        <a href="#" class="btn btn-info btn-sm">Tambah Data Siswa</a>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="card-body">
-                                    <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>NIS</th>
-                                                <th>Nama</th>
-                                                <th>Jenis Kelamin</th>
-                                                <th>Kelas</th>
-                                                <th>Jurusan</th>
-                                                <th>Alamat</th>
-                                                <th>No Telp</th>
-                                                <th>#</th>
-                                            </tr>
-                                        </thead>
-                                        @foreach ($siswas as $siswa)
-                                        <tbody>
-                                            <tr>
-                                                <td>{{ $no++ }}</td>
-                                                <td>{{ $siswa->nisn }}</td>
-                                                <td>{{ $siswa->nama_siswa }}</td>
-                                                <td>{{ $siswa->jenis_kelamin }}</td>
-                                                <td>{{ $siswa->kelas }}</td>
-                                                <td>{{ $siswa->jurusan }}</td>
-                                                <td>{{ $siswa->alamat }}</td>
-                                                <td>{{ $siswa->no_telp }}</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                    <a href="#" class="btn btn-warning btn-sm">Hapus</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        @endforeach
-                                    </table>
+                                    <h4 class="mb-3">Pie Chart</h4>
+                                    <canvas id="pieChart"></canvas>
                                 </div>
                             </div>
                         </div>
+
+                        <div id="csiswa" data-labels="{{ json_encode($csiswa) }}" style="display: none"></div>
+                        <div id="nsiswa" data-values="{{ json_encode($nsiswa) }}" style="display: none"></div>
+
+                        <div class="col-lg-6 text-center">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Tabel Hasil</h5>
+                                </div>
+                                <div class="card-body">
+                                   <table class="table"> 
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Jurusan</th>
+                                                <th>Jumlah</th>
+                                            </tr>
+                                        </thead>
+                                        @foreach ($jumlahJurusan as $jj)
+                                        <tbody>
+                                            <tr>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ $jj->jurusan }}</td>
+                                                <td>{{ $jj->jumlah }}</td>
+                                            </tr>
+                                        </tbody>
+                                        @endforeach
+                                   </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# column -->
+
+
                     </div>
                 </div>
+                <!-- .animated -->
             </div>
-            {{-- end tabel --}}    
+
+            
+
+            
+        <script src="vendors/jquery/dist/jquery.min.js"></script>
+        <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+        <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="assets/js/main.js"></script>
+        <!--  Chart js -->
+        <script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
+        <script src="assets/js/init-scripts/chart-js/chartjs-init.js"></script>
+        
+        {{-- <script src="{{ asset('js/chartjs-init.js') }}"> --}}
+            
+
+        </script>
+
+            
 @endsection

@@ -1,5 +1,8 @@
 <?php
 
+use Carbon\Laravel\ServiceProvider;
+use Illuminate\Support\Facades\Facade;
+
 return [
 
     /*
@@ -122,5 +125,22 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+    
+    // 'providers' => ServiceProvider::defaultProviders()->merge([
+    //     \Maatwebsite\Excel\ExcelServiceProvider::class,
+    // ])->toArray(),
+
+    // 'aliases' => Facade::defaultAliases()->merge([
+    //     'Excel' => \Maatwebsite\Excel\Facades\Excel::class,
+    // ])->toArray(),
+
+
+    // 'providers' => [
+    //   \Maatwebsite\Excel\ExcelServiceProvider::class,
+    // ],
+
+    // 'aliases' => [
+    //   'Excel' => \Maatwebsite\Excel\Facades\Excel::class,
+    // ],
 
 ];

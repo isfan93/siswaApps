@@ -1,0 +1,131 @@
+@extends('layouts.admin')
+@section('title', 'Masukan Data Siswa')
+@section('content')
+
+            <div class="breadcrumbs">
+                <div class="col-sm-4">
+                    <div class="page-header float-left">
+                        <div class="page-title">
+                            <h1>@yield('title')</h1>
+                        </div>
+                    </div>
+                </div>
+                {{-- <div class="col-sm-8">
+                    <div class="page-header float-right">
+                        <div class="page-title">
+                            <ol class="breadcrumb text-right">
+                                <li class="active">Dashboard</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div> --}}
+            </div>
+
+
+            {{-- table --}}
+            <div class="content mt-3">
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong class="card-title">NAMA SISWA</strong>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h3 class="card-title">
+                                        
+                                        </h3>
+                                        <div>
+                                        <a href="{{ route('siswa') }}" class="btn btn-info btn-sm">Kembali</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <strong>Data</strong> Siswa
+                                            </div>
+                                            <div class="card-body card-block">
+                                                <form action="{{ route('tambah-data-siswa') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                                   @csrf
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-2"><label for="nisn" class=" form-control-label">NISN</label></div>
+                                                        <div class="col-12 col-md-4"><input type="text" id="nisn" name="nisn" placeholder="NISN Siswa" class="form-control" value="{{ old('nisn') }}"></div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-2"><label for="nama_siswa" class=" form-control-label">Nama Siswa</label></div>
+                                                        <div class="col-12 col-md-6"><input type="text" id="nama_siswa" name="nama_siswa" placeholder="Nama Siswa" class="form-control" value="{{ old('nama_siswa') }}"></div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-2"><label for="jenis_kelamin" class=" form-control-label">Jenis Kelamin</label></div>
+                                                        <div class="col-12 col-md-4">
+                                                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" value={{ old('jenis_kelamin') }}>
+                                                                <option value="0">Please select</option>
+                                                                <option value="Laki-laki">Laki-laki</option>
+                                                                <option value="Perempuan">Perempuan</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-2"><label for="tanggal_lahir" class=" form-control-label">Tanggal Lahir</label></div>
+                                                        <div class="col-12 col-md-6"><input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" cols="20" rows="10" value={{ old('tanggal_lahir') }}></input></div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-2"><label for="alamat" class=" form-control-label">Alamat</label></div>
+                                                        <div class="col-12 col-md-6"><textarea class="form-control" name="alamat" id="alamat" cols="20" rows="10" value={{ old('alamat') }}></textarea></div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-2"><label for="no_telp" class=" form-control-label">No. Telepon</label></div>
+                                                        <div class="col-12 col-md-6"><input type="text" id="no_telp" name="no_telp" placeholder="No Telp Siswa" class="form-control" value={{ old('no_telp') }}></div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-2"><label for="email" class=" form-control-label">Email</label></div>
+                                                        <div class="col-12 col-md-6"><input type="email" id="email" name="email" placeholder="Email Siswa" class="form-control" value="{{ old('email') }}"></div>
+                                                    </div>
+                                                    {{-- <div class="row form-group">
+                                                        <div class="col col-md-2"><label for="file-input" class=" form-control-label">Foto</label></div>
+                                                        <div class="col-12 col-md-9"><input type="file" id="file-input" name="file-input" class="form-control-file"></div>
+                                                    </div> --}}
+                                                    <div class="row form-group">
+                                                        <div class="col col-md-2"><label for="kelas_id" class=" form-control-label">Kelas</label></div>
+                                                        <div class="col-12 col-md-4">
+                                                            <select name="kelas_id" id="kelas_id" class="form-control">
+                                                                <option value="0">Please select</option>
+                                                                @foreach ($kelass as $kelas)
+                                                                <option value="{{ $kelas->id }}" {{ old('kelas_id') == $kelas->id ? 'selected' : '' }}>{{ $kelas->nama_kelas }}</option>    
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    {{-- <div class="row form-group">
+                                                        <div class="col col-md-2"><label for="jurusan_id" class=" form-control-label">Jurusan</label></div>
+                                                        <div class="col-12 col-md-4">
+                                                            <select name="jurusan_id" id="jurusan_id" class="form-control">
+                                                                <option value="0">Please select</option>
+                                                                @foreach ($jurusans as $jurusan)
+                                                                <option value="{{ $jurusan->id }}" {{ old('jurusan_id') == $jurusan->id ? 'selected' : '' }}>{{ $jurusan->nama_jurusan }}</option>    
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div> --}}
+                                                
+                                            </div>
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                                </button>
+                                                <button type="reset" class="btn btn-danger btn-sm">
+                                                    <i class="fa fa-ban"></i> Reset
+                                                </button>
+                                            </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- end tabel --}}    
+@endsection

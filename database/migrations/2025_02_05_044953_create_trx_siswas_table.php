@@ -14,13 +14,19 @@ return new class extends Migration
         Schema::create('trx_siswas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_siswa')->constrained('siswas');
-            // $table->foreignId('kelas_id')->constrained('kelas');
+            $table->foreignId('id_kelas')->constrained('kelas');
             // $table->foreignId('jurusan_id')->constrained('jurusans');
-            $table->foreignId('id_guru')->constrained('gurus');
-            $table->foreignId('id_mapel')->constrained('pelajarans');
-            $table->string('nilai_pelajaran');
+            // $table->foreignId('id_mapel')->constrained('pelajarans');
+            $table->integer('matematika');
+            $table->integer('fisika');
+            $table->integer('kimia');
+            $table->integer('biologi');
+            $table->integer('bahasa_indonesia');
+            $table->integer('bahasa_inggris');
+            // $table->string('nilai_pelajaran');
             $table->date('tanggal');
             $table->string('keterangan');
+            $table->enum('status',[1,2]);
             // $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

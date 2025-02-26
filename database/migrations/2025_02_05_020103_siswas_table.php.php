@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('no_telp');
             $table->string('email')->unique();
             $table->string('foto')->nullable();
-            $table->string('kelas');
-            $table->string('jurusan');
+            $table->foreignId('kelas_id')->constrained('kelas');
+            $table->enum('status',[1,2]);
+            // $table->foreignId('jurusan_id')->constrained('jurusans');
             $table->timestamps();
         });
     }

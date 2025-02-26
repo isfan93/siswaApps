@@ -19,6 +19,6 @@ class kelas extends Model
     protected $table = 'kelas';
 
     public function siswa(){
-        return $this->hasMany(siswa::class, 'id_kelas');
+        return $this->hasMany(siswa::class);
     }
 }

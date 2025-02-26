@@ -17,19 +17,19 @@ class KelasSeeder extends Seeder
 
         kelas::create([
             'nama_kelas' => 'X-1',
-            'jurusan_id'    => '1',
+            // 'jurusan_id'    => '1',
             'wali_kelas_id' => '1'
         ]);
 
         kelas::create([
             'nama_kelas' => 'X-2',
-            'jurusan_id'    => '1',
+            // 'jurusan_id'    => '1',
             'wali_kelas_id' => '2'
         ]);
 
         kelas::create([
-            'nama_kelas' => 'X-2',
-            'jurusan_id'    => '1',
+            'nama_kelas' => 'X-3',
+            // 'jurusan_id'    => '1',
             'wali_kelas_id' => '3'
         ]);
     }

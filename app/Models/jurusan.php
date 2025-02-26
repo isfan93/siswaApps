@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PhpParser\Builder\Function_;
+use PhpParser\Node\Expr\FuncCall;
 
 class jurusan extends Model
 {
@@ -13,4 +15,8 @@ class jurusan extends Model
         'nama_jurusan',
         'singkatan',
     ];
+    
+    // public function siswa(){
+    //     return $this->hasMany(siswa::class);
+    // }
 }

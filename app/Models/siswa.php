@@ -9,28 +9,35 @@ class siswa extends Model
 {
     /** @use HasFactory<\Database\Factories\SiswaFactory> */
     protected $fillable = [
-        'nis',
+        'nisn',
         'nama_siswa',
         'jenis_kelamin',
         'tanggal_lahir',
         'alamat',
         'no_telp',
         'email',
-        'foto',
-        'id_kelas',
-        'id_jurusan',
+        'kelas_id',
+        'status'
+        // 'jurusan_id',
     ];
     
     protected $table = 'siswas';
 
     public function kelas()
     {
-        return $this->belongsTo(kelas::class, 'id_kelas');
+        return $this->belongsTo(kelas::class);
     }
+
+    // public function jurusan()
+    // {
+    //     return $this->belongsTo(jurusan::class);
+    // }
 
     public function trxSiswa(){
         return $this->hasMany(trx_siswa::class);
     }
+
+
     
 
 }
