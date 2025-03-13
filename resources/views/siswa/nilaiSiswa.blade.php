@@ -109,7 +109,7 @@
                                     @elseif($nilaiSiswa->matematika >= 75 && $nilaiSiswa->fisika >= 85 && $nilaiSiswa->bahasa_inggris >= 55 && $nilaiSiswa->biologi >= 35 && $nilaiSiswa->kimia >= 50) 
                                         <h2 class="text-center">TSM</h2>
                                         <input type="text" name="hasil_jurusan" id="" value="TSM" hidden>
-                                    @elseif($nilaiSiswa->matematika >= 770 && $nilaiSiswa->fisika >= 45 && $nilaiSiswa->bahasa_inggris >= 70 && $nilaiSiswa->biologi >= 85 && $nilaiSiswa->kimia >= 80)
+                                    @elseif($nilaiSiswa->matematika >= 70 && $nilaiSiswa->fisika >= 45 && $nilaiSiswa->bahasa_inggris >= 70 && $nilaiSiswa->biologi >= 85 && $nilaiSiswa->kimia >= 80)
                                         <h2 class="text-center">KEPERAWATAN</h2>
                                         <input type="text" name="hasil_jurusan" id="" value="Keperawatan" hidden>
                                     @elseif($nilaiSiswa->matematika >= 60 && $nilaiSiswa->fisika >= 40 && $nilaiSiswa->bahasa_inggris >= 80 && $nilaiSiswa->biologi >= 85 && $nilaiSiswa->kimia >= 65)
