@@ -20,7 +20,7 @@
                     <a href="{{ route('daftar-siswa') }}"> <i class="menu-icon fa fa-address-card"></i>Daftar Siswa </a>
                 </li>
                 <li class="active">
-                    <a href="{{ route('siswa') }}"> <i class="menu-icon fa fa-laptop"></i>Daftar Nilai Siswa </a>
+                    <a href="{{ route('daftar-nilai-siswa') }}"> <i class="menu-icon fa fa-laptop"></i>Daftar Nilai Siswa </a>
                 </li>
                 <li class="active">
                     <a href="{{ route('analisis-jurusan') }}"> <i class="menu-icon fa fa-line-chart"></i>Hasil Analisis </a>

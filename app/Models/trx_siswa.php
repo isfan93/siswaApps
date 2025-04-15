@@ -9,8 +9,10 @@ class trx_siswa extends Model
 {
     /** @use HasFactory<\Database\Factories\TrxSiswaFactory> */
     protected $fillable = [
-        'id_siswa',
-        'id_kelas',
+        // 'id_siswa',
+        // 'id_kelas',
+        'nama_siswa',
+        'kelas_id',
         'matematika',
         'fisika',
         'kimia',
@@ -29,7 +31,7 @@ class trx_siswa extends Model
 
     public function kelas()
     {
-        return $this->belongsTo(kelas::class, 'id_kelas', 'id');
+        return $this->belongsTo(kelas::class, 'kelas_id', 'id');
     }
 
     // public function jurusan()

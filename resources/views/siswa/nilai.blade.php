@@ -42,7 +42,7 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>NIS</th>
+                                                {{-- <th>NIS</th> --}}
                                                 <th>Nama</th>
                                                 <th>Kelas</th>                                                
                                                 <th>Matematika</th>
@@ -59,8 +59,8 @@
                                         <tbody>
                                             <tr>
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $ns->siswa->nisn }}</td>
-                                                <td>{{ $ns->siswa->nama_siswa }}</td>
+                                                {{-- <td>{{ $ns->siswa->nisn }}</td> --}}
+                                                <td>{{ $ns->nama_siswa }}</td>
                                                 <td>{{ $ns->kelas->nama_kelas }}</td>
                                                 <td>{{ $ns->matematika }}</td>
                                                 <td>{{ $ns->fisika }}</td>
@@ -69,6 +69,13 @@
                                                 <td>{{ $ns->bahasa_indonesia }}</td>
                                                 <td>{{ $ns->bahasa_inggris }}</td>
                                                 <td>{{ $ns->keterangan }}</td>
+                                                <td>
+                                                    @if ($ns->matematika >= 80 && $ns->fisika >= 60 && $ns->kimia >= 80 && $ns->biologi >= 45 && $ns->bahasa_inggris >= 50)
+                                                        <b>TKJ</b>
+                                                    @elseif ($ns->matematika >= 75 && $ns->fisika >= 85 && $ns->kimia >= 50 && $ns->biologi >= 35 && $ns->bahasa_inggris >= 55)
+                                                        <b>TSM</b>
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     @if ($ns->status == 1)
                                                     <a href="{{ route('data-nilai-siswa', $ns->id) }}" class="btn btn-success btn-sm">Analisis Nilai</a>
@@ -80,36 +87,44 @@
                                             </tr>
                                         </tbody>
                                         @endforeach
-                                        
-                                        {{-- <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>NISN</th>
-                                                <th>Nama Siswa</th>
-                                                <th>Nama Guru</th>
-                                                <th>Pelajaran</th>
-                                                <th>Nilai</th>
-                                                <th>Keterangan</th>
-                                            </tr>
-                                        </thead> --}}
-                                        {{-- @foreach ($nilaiSiswa as $nilai)
-                                        <tbody>
-                                            <tr>
-                                                <td>{{ $no++ }}</td>
-                                                <td>{{ $nilai->siswa->nisn }}</td>
-                                                <td>{{ $nilai->siswa->nama_siswa }}</td>
-                                                <td>{{ $nilai->guru->nama_guru }}</td>
-                                                <td>{{ $nilai->pelajaran->nama_pelajaran }}</td>
-                                                <td>{{ $nilai->nilai_pelajaran }}</td>
-                                                <td>{{ $nilai->keterangan }}</td>
-                                            </tr>
-                                        </tbody>
-                                        @endforeach --}}
+                                       
                                     </table>
+                                    <div class="d-flex justify-content-center align-items-center full-height">
+                                        <a href="#" class="btn btn btn-warning text-center">Analisis data</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                           
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Hasil Analisis Jurusan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($dataAns as $datas)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $datas->nama_siswa }}</td>
+                                            <td>{{ $datas->hasil_jurusan }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             {{-- end tabel --}}    

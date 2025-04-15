@@ -63,12 +63,13 @@
                                                 <td>{{ $siswa->no_telp }}</td>
                                                 <td>
                                                     @if ($siswa->status == 1)
-                                                    <a href="{{ route('input-nilai', $siswa->id) }}" class="btn btn-success btn-sm">Masukan Nilai</a>
+                                                    {{-- <a href="{{ route('input-nilai', $siswa->id) }}" class="btn btn-success btn-sm">Input Nilai</a> --}}
+                                                    <a href="{{ route('lihat-nilai', $siswa->id) }}" class="btn btn-success btn-sm">Lihat Nilai</a>
                                                     {{-- <a href="#" class="btn btn-primary btn-sm">Edit</a> --}}
-                                                    <a href="{{ route('hapus-siswa',$siswa->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah yakin {{ $siswa->nama_siswa }} akan di hapus ?' )">Hapus</a>
+                                                    {{-- <a href="{{ route('hapus-siswa',$siswa->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah yakin {{ $siswa->nama_siswa }} akan di hapus ?' )">Hapus</a> --}}
                                                     @else
                                                     {{-- <a href="#" class="btn btn-primary btn-sm">Edit</a> --}}
-                                                    <a href="{{ route('hapus-siswa',$siswa->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah yakin {{ $siswa->nama_siswa }} akan di hapus ?' )">Hapus</a>
+                                                    {{-- <a href="{{ route('hapus-siswa',$siswa->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah yakin {{ $siswa->nama_siswa }} akan di hapus ?' )">Hapus</a> --}}
                                                     @endif
                                                 </td>
                                             </tr>

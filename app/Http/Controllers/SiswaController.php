@@ -24,9 +24,11 @@ class SiswaController extends Controller
         $no=1;
         $siswas = siswa::all();
         $nilaiSiswa = trx_siswa::all();
+        
+        $dataAns = AnalisisNilai::all();
         // $siswa = Siswa::where('id',1)->get();
         // dd($siswa);
-        return view('siswa.nilai', compact('no','nilaiSiswa','siswas'));
+        return view('siswa.nilai', compact('no','nilaiSiswa','siswas','dataAns'));
     }
 
     public function daftarSiswa(){
@@ -53,10 +55,20 @@ class SiswaController extends Controller
             'email' => 'required',
             'kelas_id' => 'required',
             // 'jurusan_id' => 'required',
+
+            // 'id_siswa' => 'required',
+            // 'id_kelas' => 'required',
+            'matematika' => 'required',
+            'fisika' => 'required',
+            'kimia' => 'required',
+            'biologi' => 'required',
+            'bahasa_indonesia' => 'required',
+            'bahasa_inggris' => 'required',
+            'tanggal' => 'required',
         ]);
 
         $dataSiswa = [
-            'nisn'           => $request->nisn,
+            'nisn'          => $request->nisn,
             'nama_siswa'    => $request->nama_siswa,
             'jenis_kelamin' => $request->jenis_kelamin,
             'tanggal_lahir' => $request->tanggal_lahir,
@@ -67,7 +79,23 @@ class SiswaController extends Controller
             'status'        => 1
         ];
 
+        $dataNilai =[
+            // 'id_siswa' => $request->id_siswa,
+            'kelas_id'          => $request->kelas_id,
+            'nama_siswa'        => $request->nama_siswa,
+            'matematika'        => $request->matematika,
+            'fisika'            => $request->fisika,
+            'kimia'             => $request->kimia,
+            'biologi'           => $request->biologi,
+            'bahasa_indonesia'  => $request->bahasa_indonesia,
+            'bahasa_inggris'    => $request->bahasa_inggris,
+            'tanggal'           => $request->tanggal,
+            'keterangan'        => $request->keterangan,
+            'status' => 1,
+        ];
+
         siswa::create($dataSiswa);
+        trx_siswa::create($dataNilai);
         return redirect()->route('daftar-siswa')->with('success', 'Data Siswa Berhasil Ditambahkan');
     
     }
@@ -139,6 +167,12 @@ class SiswaController extends Controller
         return view('siswa.nilaiSiswa', compact('no','nilaiSiswa'));
     }
 
+    public function lihatNilai($id){
+        $no=1;
+        $siswa = trx_siswa::find($id);
+        return view('siswa.lihatNilai', compact('no','siswa'));
+    }
+
     public function simpanHasil(Request $request){
         $request->validate([
             'nama_siswa' => 'required',
@@ -162,9 +196,9 @@ class SiswaController extends Controller
         if($data_trx){
             $data_trx->update($status_trx);
             AnalisisNilai::create($jurusan);
-            return redirect()->route('analisis-jurusan')->with('success', 'Data Jurusan Berhasil Ditambahkan');
+            return redirect()->route('daftar-nilai-siswa')->with('success', 'Data Jurusan Berhasil Ditambahkan');
         }else{
-            return redirect()->route('analisis-jurusan')->with('error', 'Data Jurusan Gagal Ditambahkan');
+            return redirect()->route('daftar-nilai-siswa')->with('error', 'Data Jurusan Gagal Ditambahkan');
         }
         // return view('siswa.nilaiSiswa');
     }
@@ -174,5 +208,7 @@ class SiswaController extends Controller
         $dataAns = AnalisisNilai::all();
         return view('siswa.dataAnalisis', compact('no','dataAns'));
     }
+
+    
 
 }

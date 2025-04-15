@@ -30,14 +30,16 @@ Route::middleware('auth')->group(function(){
         Route::post('/tambah-data-siswa', 'tambahDataSiswa')->name('tambah-data-siswa');
         Route::get('/hapus-siswa/{id}', 'hapusDataSiswa')->name('hapus-siswa');
 
-        Route::get('/daftar-siswa', 'daftarSiswa')->name('daftar-siswa');
-        Route::get('/daftar-nilai-siswa', 'index')->name('siswa');
-        Route::get('/input-nilai/{id}', 'inputNilai')->name('input-nilai');
-        Route::post('/simpan-nilai', 'simpanNilai')->name('simpan-nilai');
-        Route::get('/data-nilai-siswa/{id}', 'dataNilaiSiswa')->name('data-nilai-siswa');
-        Route::post('/simpanHasil','simpanHasil')->name('simpan-hasil');
-        Route::get('/analisis-jurusan','DataJurusan')->name('analisis-jurusan');
+        Route::get('/siswa/daftar-siswa', 'daftarSiswa')->name('daftar-siswa');
+        Route::get('/siswa/daftar-nilai-siswa', 'index')->name('daftar-nilai-siswa');
+        Route::get('/siswa/input-nilai/{id}', 'inputNilai')->name('input-nilai');
+        Route::post('/siswa/simpan-nilai', 'simpanNilai')->name('simpan-nilai');
+        Route::get('/siswa/data-nilai-siswa/{id}', 'dataNilaiSiswa')->name('data-nilai-siswa');
+        Route::post('/siswa/simpanHasil','simpanHasil')->name('simpan-hasil');
+        Route::get('/siswa/analisis-jurusan','DataJurusan')->name('analisis-jurusan');
         // Route::get('/analisis-nilai','formAnalisis')->name('analisis-nilai');
+
+        Route::get('/siswa/lihatNilai/{id}','lihatNilai')->name('lihat-nilai');
 
 
         // Route::get('/dataKelas', 'dataKelas')->name('dataKelas');

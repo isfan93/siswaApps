@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('trx_siswas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_siswa')->constrained('siswas');
-            $table->foreignId('id_kelas')->constrained('kelas');
+            $table->string('nama_siswa')->length(50);
+            // $table->string('kelas')->length(50);
+            $table->foreignId('kelas_id')->constrained('kelas');
             // $table->foreignId('jurusan_id')->constrained('jurusans');
             // $table->foreignId('id_mapel')->constrained('pelajarans');
             $table->integer('matematika');
@@ -25,7 +26,7 @@ return new class extends Migration
             $table->integer('bahasa_inggris');
             // $table->string('nilai_pelajaran');
             $table->date('tanggal');
-            $table->string('keterangan');
+            $table->string('keterangan')->length(50);
             $table->enum('status',[1,2]);
             // $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

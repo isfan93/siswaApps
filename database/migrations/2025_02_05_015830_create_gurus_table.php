@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('gurus', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_guru');
+            $table->string('nama_guru')->length(50);;
             $table->string('nip')->unique();
             $table->foreignId('id_mapel')->constrained('pelajarans');
-            $table->string('alamat');
-            $table->string('no_telp');
+            $table->string('alamat')->length(150);;
+            $table->string('no_telp')->length(50);;
             $table->string('email')->unique();
             $table->string('foto')->nullable();
             $table->timestamps();

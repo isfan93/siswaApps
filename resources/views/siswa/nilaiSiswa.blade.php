@@ -29,14 +29,14 @@
                             
                             <div class="card">
                                 <div class="card-header">
-                                    <strong class="card-title">{{ $nilaiSiswa->siswa->nama_siswa }} | {{ $nilaiSiswa->kelas->nama_kelas }}</strong>
+                                    <strong class="card-title">{{ $nilaiSiswa->nama_siswa }} | {{ $nilaiSiswa->kelas->nama_kelas }}</strong>
                                     
                                     <div class="d-flex justify-content-between align-items-center">
                                         <h3 class="card-title">
                                         
                                         </h3>
                                         <div>
-                                        <a href="{{ route('siswa') }}" class="btn btn-info btn-sm">Kembali</a>
+                                        <a href="{{ route('daftar-nilai-siswa') }}" class="btn btn-info btn-sm">Kembali</a>
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@
                                     <strong class="card-title">HASIL JURUSAN </strong>
                                 </div>
                                 <div class="card-body">
-                                    <input type="text" name="nama_siswa" value="{{ $nilaiSiswa->siswa->nama_siswa }}" hidden>
+                                    <input type="text" name="nama_siswa" value="{{ $nilaiSiswa->nama_siswa }}" hidden>
                                     <input type="text" name="kelas" value="{{ $nilaiSiswa->kelas->nama_kelas }}" hidden>
                                     <input type="text" name="id" value="{{ $nilaiSiswa->id }}" hidden>
 
