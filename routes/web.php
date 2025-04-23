@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\SiswaController;
@@ -15,7 +16,10 @@ Route::controller(LoginController::class)->group(function(){
     Route::get('/login', 'index')->name('login');
     Route::post('/login-proses', 'loginProses')->name('login.proses');
     Route::get('/logout', 'logout')->name('logout');
-}); 
+});
+
+Route::get('analisa-jurusan', [JurusanController::class, 'index'])->name('analisa-jurusan');
+Route::post('analisa-jurusan/rekomendasi', [JurusanController::class, 'rekomendasi'])->name('rekomendasi');
 
 
 Route::middleware('auth')->group(function(){
@@ -23,6 +27,11 @@ Route::middleware('auth')->group(function(){
         Route::get('/dashboard', 'index')->name('dashboard');
         Route::get('/DataSiswa', 'DataSiswa');
         
+    });
+
+    Route::controller(JurusanController::class)->group(function(){
+        // Route::get('/form-data-siswa', 'index')->name('form-data-siswa');
+        Route::post('/analisa-jurusan/rekomendasi', 'rekomendasi')->name('rekomendasi');
     });
     
     Route::controller(SiswaController::class)->group(function(){
@@ -41,8 +50,12 @@ Route::middleware('auth')->group(function(){
 
         Route::get('/siswa/lihatNilai/{id}','lihatNilai')->name('lihat-nilai');
 
-
+        Route::post('/analisa-jurusan/rekomendasi', 'rekomendasi')->name('rekomendasi');
         // Route::get('/dataKelas', 'dataKelas')->name('dataKelas');
+
+        Route::post('/siswa/import', 'importSiswa')->name('siswa.import');
+
+        Route::post('/siswa/analisisAll', 'analisisAll')->name('siswa.analisisAll');
     });
 });
 

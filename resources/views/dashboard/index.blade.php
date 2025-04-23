@@ -124,7 +124,7 @@
                                         <tbody>
                                             <tr>
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $jj->jurusan }}</td>
+                                                <td>{{ $jj->nama_jurusan }}</td>
                                                 <td>{{ $jj->jumlah }}</td>
                                             </tr>
                                         </tbody>

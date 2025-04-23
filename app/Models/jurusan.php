@@ -9,14 +9,13 @@ use PhpParser\Node\Expr\FuncCall;
 
 class jurusan extends Model
 {
-    /** @use HasFactory<\Database\Factories\JurusanFactory> */
-    use HasFactory;
+    
     protected $fillable = [
-        'nama_jurusan',
-        'singkatan',
+        'nama',
+        'deskripsi',
     ];
     
-    // public function siswa(){
-    //     return $this->hasMany(siswa::class);
-    // }
+    public function mataPelajarans(){
+        return $this->belongsToMany(mataPelajaran::class)->withPivot('bobot');
+    }
 }

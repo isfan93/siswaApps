@@ -28,6 +28,11 @@
                             <div class="card">
                                 <div class="card-header">
                                     <strong class="card-title">Data Siswa</strong>
+
+                                    <button type="button" class="btn btn-primary btn-sm mr-5" data-toggle="modal" data-target="#importExcel">
+                                        IMPORT EXCEL
+                                    </button>
+                             
                                     {{-- <div class="d-flex justify-content-between align-items-center">
                                         <h3 class="card-title">
                                         
@@ -38,6 +43,8 @@
                                     </div> --}}
                                 </div>
                                 <div class="card-body">
+                                    <form action="{{ route('siswa.analisisAll') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
@@ -49,7 +56,6 @@
                                                 <th>Fisika</th>
                                                 <th>Kimia</th>
                                                 <th>Biologi</th>
-                                                <th>Bahasa Indonesia</th>
                                                 <th>Bahasa Inggris</th>
                                                 <th>Keterangan</th>
                                                 <th>#</th>
@@ -66,18 +72,17 @@
                                                 <td>{{ $ns->fisika }}</td>
                                                 <td>{{ $ns->kimia }}</td>
                                                 <td>{{ $ns->biologi }}</td>
-                                                <td>{{ $ns->bahasa_indonesia }}</td>
                                                 <td>{{ $ns->bahasa_inggris }}</td>
                                                 <td>{{ $ns->keterangan }}</td>
-                                                <td>
+                                                {{-- <td>
                                                     @if ($ns->matematika >= 80 && $ns->fisika >= 60 && $ns->kimia >= 80 && $ns->biologi >= 45 && $ns->bahasa_inggris >= 50)
                                                         <b>TKJ</b>
                                                     @elseif ($ns->matematika >= 75 && $ns->fisika >= 85 && $ns->kimia >= 50 && $ns->biologi >= 35 && $ns->bahasa_inggris >= 55)
                                                         <b>TSM</b>
                                                     @endif
-                                                </td>
+                                                </td> --}}
                                                 <td>
-                                                    @if ($ns->status == 1)
+                                                    @if ($ns->status == 0)
                                                     <a href="{{ route('data-nilai-siswa', $ns->id) }}" class="btn btn-success btn-sm">Analisis Nilai</a>
                                                     @else
                                                     <button class="btn btn-sm btn-info">Sudah Ada Hasil</button>
@@ -90,14 +95,16 @@
                                        
                                     </table>
                                     <div class="d-flex justify-content-center align-items-center full-height">
-                                        <a href="#" class="btn btn btn-warning text-center">Analisis data</a>
+                                        <button class="btn btn btn-warning text-center" type="submit">Analisis Data</button>
+                                        {{-- <a href="#" class="btn btn btn-warning text-center">Analisis data</a> --}}
                                     </div>
+                                </form>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-md-4">
                            
                         </div>
@@ -123,9 +130,36 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>
             {{-- end tabel --}}    
+
+            <!-- Import Excel -->
+            <div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" >
+                    <form method="post" action="{{ route('siswa.import') }}" enctype="multipart/form-data">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
+                            </div>
+                            <div class="modal-body">
+     
+                                @csrf
+     
+                                <label>Pilih file excel</label>
+                                <div class="form-group">
+                                    <input type="file" name="file" required="required">
+                                </div>
+     
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Import</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 @endsection

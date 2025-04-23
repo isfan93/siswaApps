@@ -44,10 +44,10 @@
                                                 <th>No</th>
                                                 <th>NIS</th>
                                                 <th>Nama</th>
-                                                <th>Jenis Kelamin</th>
+                                                {{-- <th>Jenis Kelamin</th> --}}
                                                 <th>Kelas</th>
-                                                <th>Alamat</th>
-                                                <th>No Telp</th>
+                                                {{-- <th>Alamat</th>
+                                                <th>No Telp</th> --}}
                                                 <th>#</th>
                                             </tr>
                                         </thead>
@@ -57,10 +57,10 @@
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $siswa->nisn }}</td>
                                                 <td>{{ $siswa->nama_siswa }}</td>
-                                                <td>{{ $siswa->jenis_kelamin }}</td>
+                                                {{-- <td>{{ $siswa->jenis_kelamin }}</td> --}}
                                                 <td>{{ $siswa->kelas->nama_kelas }}</td>
-                                                <td>{{ $siswa->alamat }}</td>
-                                                <td>{{ $siswa->no_telp }}</td>
+                                                {{-- <td>{{ $siswa->alamat }}</td>
+                                                <td>{{ $siswa->no_telp }}</td> --}}
                                                 <td>
                                                     @if ($siswa->status == 1)
                                                     {{-- <a href="{{ route('input-nilai', $siswa->id) }}" class="btn btn-success btn-sm">Input Nilai</a> --}}

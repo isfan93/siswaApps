@@ -22,11 +22,11 @@ return new class extends Migration
             $table->integer('fisika');
             $table->integer('kimia');
             $table->integer('biologi');
-            $table->integer('bahasa_indonesia');
+            // $table->integer('bahasa_indonesia');
             $table->integer('bahasa_inggris');
             // $table->string('nilai_pelajaran');
-            $table->date('tanggal');
-            $table->string('keterangan')->length(50);
+            // $table->date('tanggal');
+            $table->string('keterangan')->nullable();
             $table->enum('status',[1,2]);
             // $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

@@ -48,15 +48,15 @@
                                             <div class="card-body card-block">
                                                 <form action="{{ route('tambah-data-siswa') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                                    @csrf
+                                                   <div class="row form-group">
+                                                       <div class="col col-md-2"><label for="nama_siswa" class=" form-control-label">Nama Siswa</label></div>
+                                                       <div class="col-12 col-md-6"><input type="text" id="nama_siswa" name="nama_siswa" placeholder="Nama Siswa" class="form-control" value="{{ old('nama_siswa') }}"></div>
+                                                   </div>
                                                     <div class="row form-group">
                                                         <div class="col col-md-2"><label for="nisn" class=" form-control-label">NISN</label></div>
                                                         <div class="col-12 col-md-4"><input type="text" id="nisn" name="nisn" placeholder="NISN Siswa" class="form-control" value="{{ old('nisn') }}"></div>
                                                     </div>
-                                                    <div class="row form-group">
-                                                        <div class="col col-md-2"><label for="nama_siswa" class=" form-control-label">Nama Siswa</label></div>
-                                                        <div class="col-12 col-md-6"><input type="text" id="nama_siswa" name="nama_siswa" placeholder="Nama Siswa" class="form-control" value="{{ old('nama_siswa') }}"></div>
-                                                    </div>
-                                                    <div class="row form-group">
+                                                    {{-- <div class="row form-group">
                                                         <div class="col col-md-2"><label for="jenis_kelamin" class=" form-control-label">Jenis Kelamin</label></div>
                                                         <div class="col-12 col-md-4">
                                                             <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" value={{ old('jenis_kelamin') }}>
@@ -65,8 +65,8 @@
                                                                 <option value="Perempuan">Perempuan</option>
                                                             </select>
                                                         </div>
-                                                    </div>
-                                                    <div class="row form-group">
+                                                    </div> --}}
+                                                    {{-- <div class="row form-group">
                                                         <div class="col col-md-2"><label for="tanggal_lahir" class=" form-control-label">Tanggal Lahir</label></div>
                                                         <div class="col-12 col-md-6"><input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" cols="20" rows="10" value={{ old('tanggal_lahir') }}></input></div>
                                                     </div>
@@ -81,7 +81,7 @@
                                                     <div class="row form-group">
                                                         <div class="col col-md-2"><label for="email" class=" form-control-label">Email</label></div>
                                                         <div class="col-12 col-md-6"><input type="email" id="email" name="email" placeholder="Email Siswa" class="form-control" value="{{ old('email') }}"></div>
-                                                    </div>
+                                                    </div> --}}
                                                     {{-- <div class="row form-group">
                                                         <div class="col col-md-2"><label for="file-input" class=" form-control-label">Foto</label></div>
                                                         <div class="col-12 col-md-9"><input type="file" id="file-input" name="file-input" class="form-control-file"></div>
@@ -118,6 +118,20 @@
                                                 <div class="card-body card-block">
                                                         <div class="row">
                                                             <div class="col-md-6">
+
+                                                                {{-- <div class="card-body">
+                                                                    @foreach($mataPelajarans as $mapel)
+                                                                    <div class="row form-group">
+                                                                        <div class="col col-md-3"><label for="nilai_{{ $mapel->id }}" class=" form-control-label">{{ $mapel->nama }}</label></div>
+                                                                        <div class="col-12 col-md-6"><input type="number" id="nilai_{{ $mapel->id }}" name="nilai[{{ $mapel->id }}]"  
+                                                                            min="0" max="100" required placeholder="Nilai..." class="form-control form-control-sm"></div>
+                                                                    </div>
+                                                                    @endforeach
+                                                                </div> --}}
+
+
+
+
                                                                 <div class="row form-group">
                                                                     <div class="col col-md-3"><label for="text-input" class=" form-control-label">Matematika</label></div>
                                                                     <div class="col-12 col-md-6"><input type="number" id="text-input" name="matematika" placeholder="Nilai..." class="form-control form-control-sm"></div>
@@ -138,17 +152,13 @@
                                                                     <div class="col-12 col-md-6"><input type="number" id="text-input" name="biologi" placeholder="Nilai..." class="form-control form-control-sm"></div>
                                                                 </div>
                                                                 <div class="row form-group">
-                                                                    <div class="col col-md-3"><label for="text-input" class=" form-control-label">B.Indonesia</label></div>
-                                                                    <div class="col-12 col-md-6"><input type="number" id="text-input" name="bahasa_indonesia" placeholder="Nilai..." class="form-control form-control-sm"></div>
-                                                                </div>
-                                                                <div class="row form-group">
                                                                     <div class="col col-md-3"><label for="text-input" class=" form-control-label">B.Inggris</label></div>
                                                                     <div class="col-12 col-md-6"><input type="number" id="text-input" name="bahasa_inggris" placeholder="Nilai..." class="form-control form-control-sm"></div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <hr>
-                                                        <div class="row">
+                                                        {{-- <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="row form-group">
                                                                     <div class="col col-md-3"><label for="text-input" class=" form-control-label">Tanggal</label></div>
@@ -158,11 +168,11 @@
                                                             <div class="col-md-6">
                                                                 <div class="row form-group">
                                                                     <div class="col col-md-3"><label for="text-input" class=" form-control-label">Keterangan</label></div>
-                                                                    {{-- <textarea name="keterangan" id="" cols="30" rows="10" class="form-control-label"></textarea> --}}
+                                                                    
                                                                     <div class="col-12 col-md-6"><input type="text" id="text-input" name="keterangan" placeholder="Keterangan" class="form-control form-control-sm"></div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                 </div>
                                             </div>
 

@@ -9,13 +9,13 @@ class siswa extends Model
 {
     /** @use HasFactory<\Database\Factories\SiswaFactory> */
     protected $fillable = [
-        'nisn',
         'nama_siswa',
-        'jenis_kelamin',
-        'tanggal_lahir',
-        'alamat',
-        'no_telp',
-        'email',
+        'nisn',
+        // 'jenis_kelamin',
+        // 'tanggal_lahir',
+        // 'alamat',
+        // 'no_telp',
+        // 'email',
         'kelas_id',
         'status'
         // 'jurusan_id',
@@ -35,6 +35,10 @@ class siswa extends Model
 
     public function trxSiswa(){
         return $this->hasMany(trx_siswa::class);
+    }
+
+    public function nilaiSiswas(){
+        return $this->hasMany(nilaiSiswa::class);
     }
 
 

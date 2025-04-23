@@ -3,64 +3,77 @@
 namespace App\Http\Controllers;
 
 use App\Models\jurusan;
-use App\Http\Requests\StorejurusanRequest;
-use App\Http\Requests\UpdatejurusanRequest;
+use App\Models\MataPelajaran;
+use App\Models\NilaiSiswa;
+use Illuminate\Http\Request;
 
 class JurusanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $mataPelajarans = MataPelajaran::all();
+        return view('siswa.create', compact('mataPelajarans'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    
+    public function rekomendasi(Request $request)
     {
-        //
+        // Validasi input
+        $request->validate([
+            'nilai.*' => 'required|numeric|min=0|max=100'
+        ]);
+        
+        // Simpan nilai siswa
+        foreach ($request->nilai as $mataPelajaranId => $nilai) {
+            NilaiSiswa::updateOrCreate(
+                ['mata_pelajaran_id' => $mataPelajaranId],
+                ['nilai' => $nilai]
+            );
+        }
+        
+        // Proses Profile Matching
+        $jurusans = Jurusan::with('mataPelajarans')->get();
+        $nilaiSiswas = NilaiSiswa::with('mataPelajaran')->get();
+        
+        $results = [];
+        
+        foreach ($jurusans as $jurusan) {
+            $total = 0;
+            $totalBobot = 0;
+            
+            foreach ($jurusan->mataPelajarans as $mataPelajaran) {
+                $nilaiSiswa = $nilaiSiswas->where('mata_pelajaran_id', $mataPelajaran->id)->first();
+                
+                if ($nilaiSiswa) {
+                    $gap = $nilaiSiswa->nilai - $mataPelajaran->pivot->bobot;
+                    $total += $this->convertGapToScore($gap);
+                    $totalBobot += $mataPelajaran->pivot->bobot;
+                }
+            }
+            
+            if ($totalBobot > 0) {
+                $results[] = [
+                    'jurusan' => $jurusan,
+                    'score' => $total / $totalBobot
+                ];
+            }
+        }
+        
+        // Urutkan berdasarkan score tertinggi
+        usort($results, function ($a, $b) {
+            return $b['score'] <=> $a['score'];
+        });
+        
+        return view('hasil', compact('results'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StorejurusanRequest $request)
+    
+    private function convertGapToScore($gap)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(jurusan $jurusan)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(jurusan $jurusan)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatejurusanRequest $request, jurusan $jurusan)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(jurusan $jurusan)
-    {
-        //
+        // Konversi gap ke nilai berdasarkan tabel profile matching
+        // Anda bisa menyesuaikan ini sesuai kebutuhan
+        if ($gap == 0) return 5;
+        if (abs($gap) == 1) return 4;
+        if (abs($gap) == 2) return 3;
+        if (abs($gap) == 3) return 2;
+        return 1;
     }
 }

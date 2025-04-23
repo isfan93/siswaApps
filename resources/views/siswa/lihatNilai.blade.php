@@ -66,10 +66,10 @@
                                                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Biologi</label></div>
                                                                 <div class="col-12 col-md-6"><input readonly value="{{ $siswa->biologi }}" type="number" id="text-input" name="biologi" placeholder="Nilai..." class="form-control form-control-sm"></div>
                                                             </div>
-                                                            <div class="row form-group">
+                                                            {{-- <div class="row form-group">
                                                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">B.Indonesia</label></div>
                                                                 <div class="col-12 col-md-6"><input readonly value="{{ $siswa->bahasa_indonesia }}" type="number" id="text-input" name="bahasa_indonesia" placeholder="Nilai..." class="form-control form-control-sm"></div>
-                                                            </div>
+                                                            </div> --}}
                                                             <div class="row form-group">
                                                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">B.Inggris</label></div>
                                                                 <div class="col-12 col-md-6"><input readonly value="{{ $siswa->bahasa_inggris }}" type="number" id="text-input" name="bahasa_inggris" placeholder="Nilai..." class="form-control form-control-sm"></div>
@@ -81,7 +81,7 @@
                                             </div>
                                             {{-- <div class="card-footer">
                                                 <button type="submit" class="btn btn-primary btn-sm">
-                                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                                    <i class="fa fa-dot-circle-o"></i> Analisa Nilai
                                                 </button>
                                                 <button type="reset" class="btn btn-danger btn-sm">
                                                     <i class="fa fa-ban"></i> Reset

@@ -23,12 +23,19 @@ class MainController extends Controller
         $kelasAll = kelas::all()->count();
         $siswas = siswa::all();
 
-        $jumlahJurusan = jumlahJurusan::all();
+        // $jumlahJurusan = jumlahJurusan::all();
 
-        $analisisNilai = AnalisisNilai::all();
+        $jumlahJurusan = trx_siswa::selectRaw('keterangan as nama_jurusan, keterangan, COUNT(*) as jumlah')
+        ->groupBy('keterangan')
+        ->get();
 
+
+        $analisisNilai = trx_siswa::selectRaw('keterangan')
+        ->groupBy('keterangan')
+        ->get();
+        
         $nsiswa = $jumlahJurusan->pluck('jumlah');
-        $csiswa = $jumlahJurusan->pluck('jurusan');
+        $csiswa = $jumlahJurusan->pluck('nama_jurusan');
         return view('dashboard.index', compact('no','siswaAll','guruAll','pelajaranAll','kelasAll','siswas','csiswa','nsiswa','jumlahJurusan'));
     }
 

@@ -17,10 +17,10 @@ class trx_siswa extends Model
         'fisika',
         'kimia',
         'biologi',
-        'bahasa_indonesia',
+        // 'bahasa_indonesia',
         'bahasa_inggris',
-        'tanggal',
-        'keterangan',
+        // 'tanggal',
+        // 'keterangan',
         'status'        
     ];
 
