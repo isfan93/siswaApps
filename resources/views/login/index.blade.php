@@ -71,6 +71,49 @@
                     </form>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <di class="card-header">
+                            <h3>Tabel Hasil Analisis Jurusan</h3>
+                        </di>
+                        <div class="card-body">
+                            <form action="" method="GET">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input name="search" type="text" class="form-control form-control-sm" placeholder="Search...">
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-sm btn-primary">Cari</button>
+                                </div>
+                            </div>
+                            </form>
+                            <br>
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Hasil Analisis Jurusan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($dataAns as $datas)
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $datas->nama_siswa }}</td>
+                                        <td>{{ $datas->keterangan }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            {{ $dataAns->links() }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 

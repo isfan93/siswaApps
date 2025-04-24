@@ -2,14 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\trx_siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index(){
-        return view('login.index');
+    public function index(Request $request){
+
+        if($request->has('search')){
+            $dataAns = trx_siswa::where('nama_siswa', 'LIKE', '%'.$request->search.'%')->paginate(10);
+        }else{
+            $dataAns = trx_siswa::paginate(10);
+        }
+
+        $no = 1;
+        return view('login.index', compact('no','dataAns'));
     }
 
     public function loginProses(Request $request){
