@@ -77,6 +77,13 @@ class SiswaController extends Controller
             'nisn'          => $request->nisn,
             'nama_siswa'    => $request->nama_siswa,
             'jenis_kelamin' => $request->jenis_kelamin,
+
+            'matematika'        => $request->matematika,
+            'fisika'            => $request->fisika,
+            'kimia'             => $request->kimia,
+            'biologi'           => $request->biologi,
+            'bahasa_inggris'    => $request->bahasa_inggris,
+
             // 'tanggal_lahir' => $request->tanggal_lahir,
             // 'alamat'        => $request->alamat,
             // 'no_telp'       => $request->no_telp,
@@ -85,23 +92,23 @@ class SiswaController extends Controller
             'status'        => 1
         ];
 
-        $dataNilai =[
-            'nisn'              => $request->nisn,
-            'kelas_id'          => $request->kelas_id,
-            'nama_siswa'        => $request->nama_siswa,
-            'jenis_kelamin'     => $request->jenis_kelamin,
-            'matematika'        => $request->matematika,
-            'fisika'            => $request->fisika,
-            'kimia'             => $request->kimia,
-            'biologi'           => $request->biologi,
-            'bahasa_inggris'    => $request->bahasa_inggris,
-            'tanggal'           => $request->tanggal,
-            'keterangan'        => $request->keterangan,
-            'status' => 1,
-        ];
+        // $dataNilai =[
+        //     'nisn'              => $request->nisn,
+        //     'kelas_id'          => $request->kelas_id,
+        //     'nama_siswa'        => $request->nama_siswa,
+        //     'jenis_kelamin'     => $request->jenis_kelamin,
+        //     'matematika'        => $request->matematika,
+        //     'fisika'            => $request->fisika,
+        //     'kimia'             => $request->kimia,
+        //     'biologi'           => $request->biologi,
+        //     'bahasa_inggris'    => $request->bahasa_inggris,
+        //     'tanggal'           => $request->tanggal,
+        //     'keterangan'        => $request->keterangan,
+        //     'status' => 1,
+        // ];
 
-        siswa::create($dataSiswa);
-        trx_siswa::create($dataNilai);
+        // siswa::create($dataSiswa);
+        trx_siswa::create($dataSiswa);
         return redirect()->route('daftar-nilai-siswa')->with('success', 'Data Siswa Berhasil Ditambahkan');
     
     }

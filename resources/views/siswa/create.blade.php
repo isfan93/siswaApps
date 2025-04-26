@@ -59,7 +59,7 @@
                                                     <div class="row form-group">
                                                         <div class="col col-md-2"><label for="jenis_kelamin" class=" form-control-label">Jenis Kelamin</label></div>
                                                         <div class="col-12 col-md-4">
-                                                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" value={{ old('jenis_kelamin') }}>
+                                                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
                                                                 <option value="0">Please select</option>
                                                                 <option value="Laki-laki">Laki-laki</option>
                                                                 <option value="Perempuan">Perempuan</option>
