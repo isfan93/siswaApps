@@ -10,8 +10,9 @@ class trx_siswa extends Model
     /** @use HasFactory<\Database\Factories\TrxSiswaFactory> */
     protected $fillable = [
         // 'id_siswa',
-        // 'id_kelas',
+        'nisn',
         'nama_siswa',
+        'jenis_kelamin',
         'kelas_id',
         'matematika',
         'fisika',

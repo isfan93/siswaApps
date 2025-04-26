@@ -21,7 +21,7 @@
                 </div> --}}
             </div>
     
-
+            <div class="content">
             <div class="col-sm-6 col-lg-3">
                 <div class="card text-white bg-flat-color-1">
                     <div class="card-body pb-0">
@@ -44,9 +44,9 @@
                 <div class="card text-white bg-flat-color-2">
                     <div class="card-body pb-0">
                         <h4 class="mb-0">
-                            <span class="count">{{ $guruAll }}</span>
+                            <span class="count">{{ $lk }}</span>
                         </h4>
-                        <p class="text-light">Guru</p>
+                        <p class="text-light">Laki-laki</p>
 
                         <div class="chart-wrapper px-0" style="height:70px;" height="70">
                             <canvas id="widgetChart2"></canvas>
@@ -61,9 +61,9 @@
                 <div class="card text-white bg-flat-color-3">
                     <div class="card-body pb-0">
                         <h4 class="mb-0">
-                            <span class="count">{{ $pelajaranAll }}</span>
+                            <span class="count">{{ $pr }}</span>
                         </h4>
-                        <p class="text-light">Pelajaran</p>
+                        <p class="text-light">Perempuan</p>
 
                     </div>
 
@@ -140,22 +140,5 @@
                 </div>
                 <!-- .animated -->
             </div>
-
-            
-
-            
-        <script src="vendors/jquery/dist/jquery.min.js"></script>
-        <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
-        <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="assets/js/main.js"></script>
-        <!--  Chart js -->
-        <script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
-        <script src="assets/js/init-scripts/chart-js/chartjs-init.js"></script>
-        
-        {{-- <script src="{{ asset('js/chartjs-init.js') }}"> --}}
-            
-
-        </script>
-
-            
+        </div>
 @endsection

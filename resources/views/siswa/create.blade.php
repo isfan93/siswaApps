@@ -35,7 +35,7 @@
                                         
                                         </h3>
                                         <div>
-                                        <a href="{{ route('daftar-siswa') }}" class="btn btn-info btn-sm">Kembali</a>
+                                        <a href="{{ route('daftar-nilai-siswa') }}" class="btn btn-info btn-sm">Kembali</a>
                                         </div>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                                                         <div class="col col-md-2"><label for="nisn" class=" form-control-label">NISN</label></div>
                                                         <div class="col-12 col-md-4"><input type="text" id="nisn" name="nisn" placeholder="NISN Siswa" class="form-control" value="{{ old('nisn') }}"></div>
                                                     </div>
-                                                    {{-- <div class="row form-group">
+                                                    <div class="row form-group">
                                                         <div class="col col-md-2"><label for="jenis_kelamin" class=" form-control-label">Jenis Kelamin</label></div>
                                                         <div class="col-12 col-md-4">
                                                             <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" value={{ old('jenis_kelamin') }}>
@@ -65,7 +65,7 @@
                                                                 <option value="Perempuan">Perempuan</option>
                                                             </select>
                                                         </div>
-                                                    </div> --}}
+                                                    </div>
                                                     {{-- <div class="row form-group">
                                                         <div class="col col-md-2"><label for="tanggal_lahir" class=" form-control-label">Tanggal Lahir</label></div>
                                                         <div class="col-12 col-md-6"><input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" cols="20" rows="10" value={{ old('tanggal_lahir') }}></input></div>

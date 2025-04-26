@@ -15,10 +15,13 @@
                 <li class="active">
                     <a href="{{ url('dashboard') }}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                 </li>
-                <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
+                {{-- <h3 class="menu-title">UI elements</h3><!-- /.menu-title --> --}}
+                @if(Auth::user()->level == 'admin')
                 <li class="active">
-                    <a href="{{ route('daftar-siswa') }}"> <i class="menu-icon fa fa-address-card"></i>Daftar Siswa </a>
+                    <a href="{{ route('admin.index') }}"> <i class="menu-icon fa fa-address-card"></i>Master User</a>
                 </li>
+
+                @endif
                 <li class="active">
                     <a href="{{ route('daftar-nilai-siswa') }}"> <i class="menu-icon fa fa-laptop"></i>Daftar Nilai Siswa </a>
                 </li>

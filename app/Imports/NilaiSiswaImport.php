@@ -16,20 +16,22 @@ class NilaiSiswaImport implements ToModel
     {
 
           // Cek apakah kelas_id valid (>0)
-        if (empty($row[2]) || !is_numeric($row[2]) || (int)$row[2] <= 0) {
+        if (empty($row[4]) || !is_numeric($row[4]) || (int)$row[4] <= 0) {
         // Bisa juga throw error / skip row
         throw new \Exception("kelas_id tidak valid untuk siswa: " . $row[1]);
         }
 
         return new trx_siswa([
             'id' => $row[0],
-            'nama_siswa' => $row[1],
-            'kelas_id' => (int)$row[2],
-            'matematika' =>(int)$row[3],
-            'fisika' => (int)$row[4],
-            'kimia' => (int)$row[5],
-            'biologi' =>(int)$row[6],
-            'bahasa_inggris' => (int)$row[7],
+            'nisn' => (int)$row[1],
+            'nama_siswa' => $row[2],
+            'jenis_kelamin' => $row[3],
+            'kelas_id' => (int)$row[4],
+            'matematika' =>(int)$row[5],
+            'fisika' => (int)$row[6],
+            'kimia' => (int)$row[7],
+            'biologi' =>(int)$row[8],
+            'bahasa_inggris' => (int)$row[9],
             // 'keterangan' => $row[8],
         ]);
     }

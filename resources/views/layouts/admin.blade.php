@@ -27,7 +27,9 @@
     <link rel="stylesheet" href="\assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    {{-- @include('sweetalert::alert'); --}}
 </head>
 
 <body>
@@ -72,6 +74,9 @@
     <script src="\vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 
     <!--  Chart js -->
+    <script src="\vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="\assets/js/init-scripts/chart-js/chartjs-init.js"></script>
+    
     
 
     <script>
@@ -92,6 +97,30 @@
             });
         })(jQuery);
     </script>
+
+@if (session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Sukses!',
+        text: '{{ session('success') }}',
+        showConfirmButton: false,
+        timer: 3000
+    });
+</script>
+@endif
+
+@if (session('error'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '{{ session('error') }}',
+        showConfirmButton: true
+    });
+</script>
+@endif
+
 
 </body>
 

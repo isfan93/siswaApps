@@ -17,9 +17,9 @@ class MainController extends Controller
     public function index()
     {   
         $no = 1;
-        $siswaAll =  siswa::all()->count();
-        $guruAll = guru::all()->count();
-        $pelajaranAll = pelajaran::all()->count();
+        $siswaAll =  trx_siswa::all()->count();
+        $lk = trx_siswa::where('jenis_kelamin', 'Laki-laki')->count();
+        $pr = trx_siswa::where('jenis_kelamin', 'Perempuan')->count();
         $kelasAll = kelas::all()->count();
         $siswas = siswa::all();
 
@@ -36,7 +36,7 @@ class MainController extends Controller
         
         $nsiswa = $jumlahJurusan->pluck('jumlah');
         $csiswa = $jumlahJurusan->pluck('nama_jurusan');
-        return view('dashboard.index', compact('no','siswaAll','guruAll','pelajaranAll','kelasAll','siswas','csiswa','nsiswa','jumlahJurusan'));
+        return view('dashboard.index', compact('no','siswaAll','lk','pr','kelasAll','siswas','csiswa','nsiswa','jumlahJurusan'));
     }
 
    

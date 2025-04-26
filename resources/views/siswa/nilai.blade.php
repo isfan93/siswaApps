@@ -28,10 +28,22 @@
                             <div class="card">
                                 <div class="card-header">
                                     <strong class="card-title">Data Siswa</strong>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h3 class="card-title">
+                                        
+                                        </h3>
+                                        <div>
+                                            <button type="button" class="btn btn-primary btn-sm mr-5" data-toggle="modal" data-target="#importExcel">
+                                                IMPORT EXCEL
+                                            </button>
+                                            <a href="{{ route('form-data-siswa') }}" class="btn btn-info btn-sm">Tambah Data Siswa</a>
+                                        </div>
+                                    </div>
 
-                                    <button type="button" class="btn btn-primary btn-sm mr-5" data-toggle="modal" data-target="#importExcel">
-                                        IMPORT EXCEL
-                                    </button>
+                                   
+                                    {{-- <button type="button" class="btn btn-primary btn-sm mr-5" data-toggle="modal" data-target="#importExcel">
+                                        TAMBAH DATA SISWA
+                                    </button> --}}
                              
                                     {{-- <div class="d-flex justify-content-between align-items-center">
                                         <h3 class="card-title">
@@ -49,31 +61,33 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                {{-- <th>NIS</th> --}}
+                                                <th>NISN</th>
                                                 <th>Nama</th>
+                                                <th>Jenis Kelamin</th>
                                                 <th>Kelas</th>                                                
                                                 <th>Matematika</th>
                                                 <th>Fisika</th>
                                                 <th>Kimia</th>
                                                 <th>Biologi</th>
                                                 <th>Bahasa Inggris</th>
-                                                <th>Keterangan</th>
-                                                <th>#</th>
+                                                <th>Jurusan</th>
+                                                {{-- <th>#</th> --}}
                                             </tr>
                                         </thead>
                                         @foreach ($nilaiSiswa as $ns)
                                         <tbody>
                                             <tr>
                                                 <td>{{ $no++ }}</td>
-                                                {{-- <td>{{ $ns->siswa->nisn }}</td> --}}
+                                                <td>{{ $ns->nisn }}</td>
                                                 <td>{{ $ns->nama_siswa }}</td>
                                                 <td>{{ $ns->kelas->nama_kelas }}</td>
+                                                <td>{{ $ns->jenis_kelamin }}</td>
                                                 <td>{{ $ns->matematika }}</td>
                                                 <td>{{ $ns->fisika }}</td>
                                                 <td>{{ $ns->kimia }}</td>
                                                 <td>{{ $ns->biologi }}</td>
                                                 <td>{{ $ns->bahasa_inggris }}</td>
-                                                <td>{{ $ns->keterangan }}</td>
+                                                <td><strong>{{ $ns->keterangan }}</td></strong>
                                                 {{-- <td>
                                                     @if ($ns->matematika >= 80 && $ns->fisika >= 60 && $ns->kimia >= 80 && $ns->biologi >= 45 && $ns->bahasa_inggris >= 50)
                                                         <b>TKJ</b>
@@ -81,21 +95,22 @@
                                                         <b>TSM</b>
                                                     @endif
                                                 </td> --}}
-                                                <td>
+                                                {{-- <td>
                                                     @if ($ns->status == 0)
-                                                    <a href="{{ route('data-nilai-siswa', $ns->id) }}" class="btn btn-success btn-sm">Analisis Nilai</a>
+                                                    <label style="color:rgb(128, 0, 0)">Belum Ada Hasil</label>
+                                                   
                                                     @else
-                                                    <button class="btn btn-sm btn-info">Sudah Ada Hasil</button>
+                                                    <label style="color:rgb(0, 128, 28)">Sudah Ada Hasil</label>
                                                     @endif
                                                     
-                                                </td>
+                                                </td> --}}
                                             </tr>
                                         </tbody>
                                         @endforeach
                                        
                                     </table>
                                     <div class="d-flex justify-content-center align-items-center full-height">
-                                        <button class="btn btn btn-warning text-center" type="submit">Analisis Data</button>
+                                        <button class="btn btn btn-warning text-center" type="submit">Analisis Jurusan</button>
                                         {{-- <a href="#" class="btn btn btn-warning text-center">Analisis data</a> --}}
                                     </div>
                                 </form>

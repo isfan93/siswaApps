@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
@@ -8,19 +9,13 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('login/index');
-});
+
 
 Route::controller(LoginController::class)->group(function(){
-    Route::get('/login', 'index')->name('login');
+    Route::get('/', 'index')->name('login');
     Route::post('/login-proses', 'loginProses')->name('login.proses');
     Route::get('/logout', 'logout')->name('logout');
 });
-
-Route::get('analisa-jurusan', [JurusanController::class, 'index'])->name('analisa-jurusan');
-Route::post('analisa-jurusan/rekomendasi', [JurusanController::class, 'rekomendasi'])->name('rekomendasi');
-
 
 Route::middleware('auth')->group(function(){
     Route::controller(MainController::class)->group(function(){
@@ -28,34 +23,30 @@ Route::middleware('auth')->group(function(){
         Route::get('/DataSiswa', 'DataSiswa');
         
     });
-
-    Route::controller(JurusanController::class)->group(function(){
-        // Route::get('/form-data-siswa', 'index')->name('form-data-siswa');
-        Route::post('/analisa-jurusan/rekomendasi', 'rekomendasi')->name('rekomendasi');
-    });
     
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/user', 'index')->name('admin.index');
+        Route::get('/user/tambah-user', 'formTambahUser')->name('admin.tambah');
+        Route::post('/user/tambah-user-proses', 'tambahUser')->name('tambah-user');
+        Route::get('/user/hapus-user/{id}', 'hapusUser')->name('hapus-user');
+        Route::get('/user/edit-user/{id}', 'editUser')->name('edit-user');
+        Route::post('/user/edit-user-proses/{id}', 'UpdateUser')->name('update-user');
+    });
+
+
     Route::controller(SiswaController::class)->group(function(){
-        Route::get('/form-data-siswa', 'formDataSiswa')->name('form-data-siswa');
-        Route::post('/tambah-data-siswa', 'tambahDataSiswa')->name('tambah-data-siswa');
-        Route::get('/hapus-siswa/{id}', 'hapusDataSiswa')->name('hapus-siswa');
-
-        Route::get('/siswa/daftar-siswa', 'daftarSiswa')->name('daftar-siswa');
-        Route::get('/siswa/daftar-nilai-siswa', 'index')->name('daftar-nilai-siswa');
-        Route::get('/siswa/input-nilai/{id}', 'inputNilai')->name('input-nilai');
-        Route::post('/siswa/simpan-nilai', 'simpanNilai')->name('simpan-nilai');
-        Route::get('/siswa/data-nilai-siswa/{id}', 'dataNilaiSiswa')->name('data-nilai-siswa');
-        Route::post('/siswa/simpanHasil','simpanHasil')->name('simpan-hasil');
-        Route::get('/siswa/analisis-jurusan','DataJurusan')->name('analisis-jurusan');
-        // Route::get('/analisis-nilai','formAnalisis')->name('analisis-nilai');
-
-        Route::get('/siswa/lihatNilai/{id}','lihatNilai')->name('lihat-nilai');
-
-        Route::post('/analisa-jurusan/rekomendasi', 'rekomendasi')->name('rekomendasi');
-        // Route::get('/dataKelas', 'dataKelas')->name('dataKelas');
+        Route::get('/siswa/daftar-siswa', 'index')->name('daftar-nilai-siswa');
+        Route::get('/siswa/form-tambah-data', 'formDataSiswa')->name('form-data-siswa');
+        Route::post('/siswa/tambah-data-siswa', 'tambahDataSiswa')->name('tambah-data-siswa');
+        Route::get('/siswa/hapus-siswa/{id}', 'hapusDataSiswa')->name('hapus-siswa');
 
         Route::post('/siswa/import', 'importSiswa')->name('siswa.import');
-
         Route::post('/siswa/analisisAll', 'analisisAll')->name('siswa.analisisAll');
+
+
+
+
+        
     });
 });
 

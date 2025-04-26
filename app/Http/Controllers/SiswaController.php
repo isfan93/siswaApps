@@ -55,7 +55,7 @@ class SiswaController extends Controller
         $request->validate([
             'nisn' => 'required',
             'nama_siswa' => 'required',
-            // 'jenis_kelamin' => 'required',
+            'jenis_kelamin' => 'required',
             // 'tanggal_lahir' => 'required',
             // 'alamat' => 'required',
             // 'no_telp' => 'required',
@@ -76,7 +76,7 @@ class SiswaController extends Controller
         $dataSiswa = [
             'nisn'          => $request->nisn,
             'nama_siswa'    => $request->nama_siswa,
-            // 'jenis_kelamin' => $request->jenis_kelamin,
+            'jenis_kelamin' => $request->jenis_kelamin,
             // 'tanggal_lahir' => $request->tanggal_lahir,
             // 'alamat'        => $request->alamat,
             // 'no_telp'       => $request->no_telp,
@@ -86,9 +86,10 @@ class SiswaController extends Controller
         ];
 
         $dataNilai =[
-            // 'id_siswa' => $request->id_siswa,
+            'nisn'              => $request->nisn,
             'kelas_id'          => $request->kelas_id,
             'nama_siswa'        => $request->nama_siswa,
+            'jenis_kelamin'     => $request->jenis_kelamin,
             'matematika'        => $request->matematika,
             'fisika'            => $request->fisika,
             'kimia'             => $request->kimia,
@@ -101,7 +102,7 @@ class SiswaController extends Controller
 
         siswa::create($dataSiswa);
         trx_siswa::create($dataNilai);
-        return redirect()->route('daftar-siswa')->with('success', 'Data Siswa Berhasil Ditambahkan');
+        return redirect()->route('daftar-nilai-siswa')->with('success', 'Data Siswa Berhasil Ditambahkan');
     
     }
 
@@ -288,13 +289,18 @@ class SiswaController extends Controller
                     $jurusanTerbaik = $jurusan;
                 }
             }
-    
+            // trx_siswa::where('status', 0)->update(['status' => 1]);
             // Set keterangan jurusan terbaik meskipun tidak memenuhi 100% syarat
             $ns->keterangan = $jurusanTerbaik ?? 'Tidak Diketahui';
             $ns->save();
+
+          
+            
+
         }
         return view('siswa.nilai', compact('no','nilaiSiswa'));
     }
+    
     
 
     

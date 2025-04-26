@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\trx_siswa;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,6 +34,8 @@ class LoginController extends Controller
         ];
 
         $user = User::where('username', $request->input('username'))->first();
+
+        
     
        if(Auth::attempt($data)){
         return redirect()->route('dashboard')->with('success', 'Login Berhasil');
@@ -43,6 +46,6 @@ class LoginController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Logout Berhasil');
     }
 }

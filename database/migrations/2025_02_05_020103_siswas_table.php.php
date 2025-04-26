@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_siswa')->length(50);
             $table->string('nisn')->unique();
-            // $table->string('jenis_kelamin')->length(50);
+            $table->string('jenis_kelamin')->length(50);
             // $table->date('tanggal_lahir');
             // $table->string('alamat')->length(150);
             // $table->string('no_telp')->length(50);;
