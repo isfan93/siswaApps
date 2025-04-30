@@ -18,8 +18,16 @@ class LoginController extends Controller
             $dataAns = trx_siswa::paginate(10);
         }
 
+        $jumlahJurusan = trx_siswa::selectRaw('keterangan as nama_jurusan, keterangan, COUNT(*) as jumlah')
+        ->groupBy('keterangan')
+        ->get();
+
+        
+        $nsiswa = $jumlahJurusan->pluck('jumlah');
+        $csiswa = $jumlahJurusan->pluck('nama_jurusan');
+
         $no = 1;
-        return view('login.index', compact('no','dataAns'));
+        return view('login.index', compact('no','dataAns','nsiswa','csiswa'));
     }
 
     public function loginProses(Request $request){
@@ -38,7 +46,7 @@ class LoginController extends Controller
         
     
        if(Auth::attempt($data)){
-        return redirect()->route('dashboard')->with('success', 'Login Berhasil');
+        return redirect()->route('dashboard')->with('success','Selamat Datang, '.$user->name);
        } else {
         return redirect()->back()->with('error', 'Username atau Password salah');
        }

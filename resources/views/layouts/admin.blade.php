@@ -27,9 +27,10 @@
     <link rel="stylesheet" href="\assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    {{-- Sweetalert 2 --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    {{-- @include('sweetalert::alert'); --}}
+    
 </head>
 
 <body>
@@ -98,19 +99,32 @@
         })(jQuery);
     </script>
 
-@if (session('success'))
-<script>
-    Swal.fire({
-        icon: 'success',
-        title: 'Sukses!',
-        text: '{{ session('success') }}',
-        showConfirmButton: false,
-        timer: 3000
-    });
-</script>
-@endif
+    @if (session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses!',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    </script>
+    @endif
 
-@if (session('error'))
+    <!-- Validasi Error dari Server -->
+    @if ($errors->any())
+    <script>
+        Swal.fire({
+            title: 'Validasi Error!',
+            html: `{!! implode('<br>', $errors->all()) !!}`,
+            icon: 'error',
+            confirmButtonText: 'Mengerti'
+        });
+    </script>
+    @endif
+
+
+{{-- @if (session('error'))
 <script>
     Swal.fire({
         icon: 'error',
@@ -119,7 +133,7 @@
         showConfirmButton: true
     });
 </script>
-@endif
+@endif --}}
 
 
 </body>

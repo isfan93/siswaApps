@@ -37,9 +37,9 @@ class siswa extends Model
         return $this->hasMany(trx_siswa::class);
     }
 
-    public function nilaiSiswas(){
-        return $this->hasMany(nilaiSiswa::class);
-    }
+    // public function nilaiSiswas(){
+    //     return $this->hasMany(nilaiSiswas::class);
+    // }
 
 
     

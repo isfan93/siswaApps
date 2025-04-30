@@ -97,17 +97,6 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="row form-group">
-                                                        <div class="col col-md-2"><label for="jurusan_id" class=" form-control-label">Jurusan</label></div>
-                                                        <div class="col-12 col-md-4">
-                                                            <select name="jurusan_id" id="jurusan_id" class="form-control">
-                                                                <option value="0">Please select</option>
-                                                                @foreach ($jurusans as $jurusan)
-                                                                <option value="{{ $jurusan->id }}" {{ old('jurusan_id') == $jurusan->id ? 'selected' : '' }}>{{ $jurusan->nama_jurusan }}</option>    
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div> --}}
                                                 
                                             </div>
 

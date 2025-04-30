@@ -20,7 +20,7 @@ Route::controller(LoginController::class)->group(function(){
 Route::middleware('auth')->group(function(){
     Route::controller(MainController::class)->group(function(){
         Route::get('/dashboard', 'index')->name('dashboard');
-        Route::get('/DataSiswa', 'DataSiswa');
+        
         
     });
     
@@ -41,8 +41,10 @@ Route::middleware('auth')->group(function(){
         Route::get('/siswa/hapus-siswa/{id}', 'hapusDataSiswa')->name('hapus-siswa');
 
         Route::post('/siswa/import', 'importSiswa')->name('siswa.import');
+        Route::get('/siswa/export', 'exportSiswa')->name('siswa.export');
         Route::post('/siswa/analisisAll', 'analisisAll')->name('siswa.analisisAll');
 
+        Route::get('/siswa/hapus-data/', 'hapusSemuaData')->name('hapus-semua-data');
 
 
 

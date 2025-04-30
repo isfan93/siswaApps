@@ -33,7 +33,7 @@
                                         
                                         </h3>
                                         <div>
-                                        <a href="{{ route('admin.tambah') }}" class="btn btn-info btn-sm">Tambah Data User</a>
+                                        <a href="{{ route('admin.tambah') }}" class="btn btn-info btn-sm rounded"><i class="fa fa-plus-square" aria-hidden="true"></i> Tambah Data User</a>
                                         </div>
                                     </div>
                                 </div>
@@ -58,8 +58,8 @@
                                                 <td>{{ $user->password }}</td>
                                                 <td>{{ $user->level }}</td>
                                                 <td>
-                                                    <a href="{{ route('edit-user', $user->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                                    <a href="{{ route('hapus-user', $user->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah yakin User {{ $user->username }} akan di hapus ?' )">Hapus</a>
+                                                    <a href="{{ route('edit-user', $user->id) }}" class="btn btn-primary btn-sm rounded"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                                                    <a href="{{ route('hapus-user', $user->id) }}" class="btn btn-danger btn-sm rounded" onclick="return confirm('Apakah yakin User {{ $user->username }} akan di hapus ?' )"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</a>
                                                 </td>
                                             </tr>
                                         </tbody>

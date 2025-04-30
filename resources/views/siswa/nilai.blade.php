@@ -32,12 +32,19 @@
                                         <h3 class="card-title">
                                         
                                         </h3>
-                                        <div>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a href="{{ route('siswa.export') }}" class="btn btn-warning rounded"><i class="fa fa-file-o" aria-hidden="true"></i> Export Data </a>
+                                            <button type="button" class="btn btn-success rounded" data-toggle="modal" data-target="#importExcel"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Import Data</button>
+                                            <a href="{{ route('form-data-siswa') }}" class="btn btn-info rounded"><i class="fa fa-plus-square" aria-hidden="true"></i> Tambah Data </a>
+                                            <a href="{{ route('hapus-semua-data') }}" class="btn btn-danger" onclick="return confirm('Apakah yakin semua data akan di hapus ?' )"><i class="fa fa-trash" aria-hidden="true"></i> Hapus Semua Data</a>
+                                          </div>
+                                        {{-- <div>
                                             <button type="button" class="btn btn-primary btn-sm mr-5" data-toggle="modal" data-target="#importExcel">
                                                 IMPORT EXCEL
                                             </button>
                                             <a href="{{ route('form-data-siswa') }}" class="btn btn-info btn-sm">Tambah Data Siswa</a>
-                                        </div>
+                                            <a href="#" class="btn btn-danger btn-sm">Hapus Semua Data Siswa</a>
+                                        </div> --}}
                                     </div>
 
                                    
@@ -110,7 +117,7 @@
                                        
                                     </table>
                                     <div class="d-flex justify-content-center align-items-center full-height">
-                                        <button class="btn btn btn-warning text-center" type="submit">Analisis Jurusan</button>
+                                        <button class="btn btn btn-dark text-center rounded" type="submit">Analisis Jurusan <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                                         {{-- <a href="#" class="btn btn btn-warning text-center">Analisis data</a> --}}
                                     </div>
                                 </form>
@@ -177,4 +184,40 @@
                     </form>
                 </div>
             </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    @if (session('success'))
+                        // Tampilkan Loading Dulu
+                        Swal.fire({
+                            title: 'Memproses...',
+                            html: 'Tunggu sebentar ya...',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            didOpen: () => {
+                                Swal.showLoading()
+                            }
+                        });
+        
+                        // Setelah 2 detik, tutup loading dan tampilkan sukses
+                        setTimeout(function () {
+                            Swal.fire({
+                                title: 'Berhasil!',
+                                text: '{{ session('success') }}',
+                                icon: 'success',
+                                confirmButtonText: 'Oke'
+                            });
+                        }, 2000);
+        
+                    @elseif (session('error'))
+                        Swal.fire({
+                            title: 'Oops!',
+                            text: '{{ session('error') }}',
+                            icon: 'error',
+                            confirmButtonText: 'Coba Lagi'
+                        });
+                    @endif
+                });
+            </script>
+        
 @endsection

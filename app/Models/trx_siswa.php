@@ -32,7 +32,7 @@ class trx_siswa extends Model
 
     public function kelas()
     {
-        return $this->belongsTo(kelas::class, 'kelas_id', 'id');
+        return $this->belongsTo(kelas::class, 'kelas_id');
     }
 
     // public function jurusan()

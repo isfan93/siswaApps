@@ -27,6 +27,9 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
+    {{-- Sweetalert 2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 
 </head>
@@ -48,11 +51,11 @@
                         @csrf
                         <div class="form-group">
                             <label>Username</label>
-                            <input name="username" type="username" class="form-control" placeholder="Username">
+                            <input name="username" type="username" class="form-control" placeholder="Username" required>
                         </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input name="password" type="password" class="form-control" placeholder="Password">
+                                <input name="password" type="password" class="form-control" placeholder="Password" required>
                         </div>
                                 {{-- <div class="checkbox">
                                     <label>
@@ -63,7 +66,7 @@
                             </label>
 
                                 </div> --}}
-                                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30 rounded">Sign in <i class="fa fa-sign-in" aria-hidden="true"></i></button>
                                 {{-- <a href="/dashboard" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in></a> --}}
                                 {{-- <div class="register-link m-t-15 text-center">
                                     <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
@@ -73,7 +76,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="card">
                         <di class="card-header">
                             <h3>Tabel Hasil Analisis Jurusan</h3>
@@ -85,7 +88,7 @@
                                     <input name="search" type="text" class="form-control form-control-sm" placeholder="Search...">
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="submit" class="btn btn-sm btn-primary">Cari</button>
+                                    <button type="submit" class="btn btn-sm btn-primary px-3 rounded"> <i class="fa fa-search" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                             </form>
@@ -112,6 +115,31 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <di class="card-header">
+                            <h3>Diagram Hasil Analisis Jurusan</h3>
+                        </di>
+                        <div class="card-body">
+                            <div class="content mt-3">
+                                <div class="animated fadeIn">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="mb-3">Pie Chart</h4>
+                                            <canvas id="pieChart"></canvas>
+                                        </div>
+                                    </div>
+                                        <div id="csiswa" data-labels="{{ json_encode($csiswa) }}" style="display: none"></div>
+                                        <div id="nsiswa" data-values="{{ json_encode($nsiswa) }}" style="display: none"></div>
+                
+                                </div>
+                                <!-- .animated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -122,6 +150,35 @@
     <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <!--  Chart js -->
+    <script src="\vendors/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="\assets/js/init-scripts/chart-js/chartjs-init.js"></script>
+    
+
+    @if (session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Sukses!',
+        text: '{{ session('success') }}',
+        showConfirmButton: false,
+        timer: 3000
+    });
+</script>
+@endif
+
+
+@if (session('error'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '{{ session('error') }}',
+        showConfirmButton: true
+    });
+</script>
+@endif
 
 
 </body>
