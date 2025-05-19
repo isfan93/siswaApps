@@ -66,7 +66,9 @@ class AdminController extends Controller
         ];
         User::where('id', $id)->update($updateUser);
 
-        return view('admin.edit', compact('user'));
+        return Redirect()->route('admin.index')->with('success','User telah berhasil di Update!');
+
+        // return view('admin.edit');
     }
         
 }
