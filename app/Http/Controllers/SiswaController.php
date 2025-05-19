@@ -23,14 +23,14 @@ class SiswaController extends Controller
     public function index()
     {
         $no=1;
-        $siswas = siswa::all();
+        // $siswas = siswa::all();
         $nilaiSiswa = trx_siswa::all();
         
-        $dataAns = AnalisisNilai::all();
+        // $dataAns = AnalisisNilai::all();
         
         
 
-        return view('siswa.nilai', compact('no','nilaiSiswa','siswas','dataAns'));
+        return view('siswa.nilai', compact('no','nilaiSiswa'));
     }
 
 

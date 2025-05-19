@@ -21,7 +21,7 @@ class MainController extends Controller
         $lk = trx_siswa::where('jenis_kelamin', 'Laki-laki')->count();
         $pr = trx_siswa::where('jenis_kelamin', 'Perempuan')->count();
         $kelasAll = kelas::all()->count();
-        $siswas = siswa::all();
+        // $siswas = siswa::all();
 
         // $jumlahJurusan = jumlahJurusan::all();
 
@@ -36,7 +36,7 @@ class MainController extends Controller
         
         $nsiswa = $jumlahJurusan->pluck('jumlah');
         $csiswa = $jumlahJurusan->pluck('nama_jurusan');
-        return view('dashboard.index', compact('no','siswaAll','lk','pr','kelasAll','siswas','csiswa','nsiswa','jumlahJurusan'));
+        return view('dashboard.index', compact('no','siswaAll','lk','pr','kelasAll','csiswa','nsiswa','jumlahJurusan'));
     }
 
    
