@@ -27,7 +27,7 @@ class LoginController extends Controller
         $csiswa = $jumlahJurusan->pluck('nama_jurusan');
 
         $no = 1;
-        return view('login.index', compact('no','dataAns','nsiswa','csiswa'));
+        return view('login.index', compact('no','dataAns','nsiswa','csiswa', 'jumlahJurusan'));
     }
 
     public function loginProses(Request $request){

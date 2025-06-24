@@ -33,10 +33,15 @@
                                         
                                         </h3>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ route('siswa.export') }}" class="btn btn-warning rounded"><i class="fa fa-file-o" aria-hidden="true"></i> Export Data </a>
-                                            <button type="button" class="btn btn-success rounded" data-toggle="modal" data-target="#importExcel"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Import Data</button>
-                                            <a href="{{ route('form-data-siswa') }}" class="btn btn-info rounded"><i class="fa fa-plus-square" aria-hidden="true"></i> Tambah Data </a>
-                                            <a href="{{ route('hapus-semua-data') }}" class="btn btn-danger" onclick="return confirm('Apakah yakin semua data akan di hapus ?' )"><i class="fa fa-trash" aria-hidden="true"></i> Hapus Semua Data</a>
+                                            @if (auth()->user()->level == 'admin')
+                                                <a href="{{ route('siswa.export') }}" class="btn btn-warning rounded"><i class="fa fa-file-o" aria-hidden="true"></i> Export Data </a>
+                                                <button type="button" class="btn btn-success rounded" data-toggle="modal" data-target="#importExcel"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Import Data</button>
+                                                <a href="{{ route('form-data-siswa') }}" class="btn btn-info rounded"><i class="fa fa-plus-square" aria-hidden="true"></i> Tambah Data </a>
+                                                <a href="{{ route('hapus-semua-data') }}" class="btn btn-danger" onclick="return confirm('Apakah yakin semua data akan di hapus ?' )"><i class="fa fa-trash" aria-hidden="true"></i> Hapus Semua Data</a>
+                                            @else
+                                                <a href="{{ route('siswa.export') }}" class="btn btn-warning rounded"><i class="fa fa-file-o" aria-hidden="true"></i> Export Data </a>
+                                            @endif
+                                            
                                           </div>
                                         {{-- <div>
                                             <button type="button" class="btn btn-primary btn-sm mr-5" data-toggle="modal" data-target="#importExcel">

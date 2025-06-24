@@ -75,12 +75,40 @@
                 </div>
             </div>
 
+            
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <di class="card-header">
+                        <div class="card-header">
+                            <h5>Tabel Hasil</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table"> 
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Jurusan</th>
+                                        <th>Jumlah</th>
+                                    </tr>
+                                </thead>
+                                @foreach ($jumlahJurusan as $jj)
+                                <tbody>
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $jj->nama_jurusan }}</td>
+                                        <td>{{ $jj->jumlah }}</td>
+                                    </tr>
+                                </tbody>
+                                @endforeach
+                            </table>
+                        </div>
+                    </div>
+                        
+                    {{-- <div class="card">
+                        <div class="card-header">
                             <h3>Tabel Hasil Analisis Jurusan</h3>
-                        </di>
+                        </div>
                         <div class="card-body">
                             <form action="" method="GET">
                             <div class="row">
@@ -113,7 +141,7 @@
                             </table>
                             {{ $dataAns->links() }}
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="col-md-6">
